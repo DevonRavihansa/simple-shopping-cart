@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Cart Page</title>
+</head>
+<body>
+<ul th:replace="fragments/header :: navigation"></ul>
+
+<h4>Total: Rs.<span th:text="${session.shoppingCart.total}"></span></h4>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>name</th>
+        <th>price</th>
+        <th>quantity</th>
+        <th>subtotal</th>
+        <th>remove</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="item : ${session.shoppingCart.items}">
+        <td th:text="${item.product.id}"></td>
+        <td th:text="${item.product.name}"></td>
+        <td>Rs.<span th:text="${item.product.price}"></span></td>
+        <td>
+            <form action="#" th:action="@{/cart/update}" method="post">
+                <input type="hidden" th:value="${item.product.id}" name="id"/>
+                <input type="number" min="1" th:value="${item.quantity}" name="qty"/>
+                <button type="submit">update</button>
+            </form>
+        </td>
+        <td>Rs.<span th:text="${item.subTotal}"></span></td>
+        <td>
+            <form action="#" th:action="@{/cart/remove}" method="post">
+                <input type="hidden" th:value="${item.product.id}" name="id"/>
+                <button type="submit">remove</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

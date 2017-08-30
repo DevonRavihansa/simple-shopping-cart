@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+</head>
+<body>
+<ul th:fragment="navigation">
+    <li>
+        <a th:href="@{/}">Home</a>
+    </li>
+    <li>
+        <a th:href="@{/shop}">Shop</a>
+    </li>
+    <li>
+        <a th:href="@{/cart}">Cart <span>0</span> items(Rs.<span>0</span>)</a>
+    </li>
+</ul>
+</body>
+</html>

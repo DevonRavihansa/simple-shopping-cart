@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Product Page</title>
+</head>
+<body>
+<ul th:replace="fragments/header :: navigation"></ul>
+<form th:action="@{/cart/add}">
+    <table border="1">
+        <tbody>
+        <tr>
+            <th>id</th>
+            <td><input type="hidden" th:value="${product.id}" name="id"/><span th:text="${product.id}"></span></td>
+        </tr>
+        <tr>
+            <th>name</th>
+            <td th:text="${product.name}"></td>
+        </tr>
+        <tr>
+            <th>sku</th>
+            <td th:text="${product.sku}"></td>
+        </tr>
+        <tr>
+            <th>price</th>
+            <td>Rs.<span th:text="${product.price}"></span></td>
+        </tr>
+        <tr>
+            <th>quantity</th>
+            <td><input type="number" min="1" value="1" name="qty" /></td>
+        </tr>
+        <tr>
+            <th>#</th>
+            <td><button type="submit">Add to cart</button></td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+</body>
+</html>
